@@ -12,7 +12,7 @@ function calcularTotal(){
         }
     });
 
-    document.getElementById('valor-total').innerText = total.toFixed(2);
+    document.getElementById('valor-total').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
 const checkboxes = document.querySelectorAll('.item-produto input[type="checkbox"]');
