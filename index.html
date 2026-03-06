@@ -29,7 +29,15 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="carrinho.html"><i class="bi-cart">Carrinho</i></a>
+                        <a class="nav-link active position-relative" aria-current="page" href="carrinho.html">
+                            <span class="position-relative d-inline-block">
+                                <i class="bi-cart me-3 fs-5"></i>
+                                <span id="contador-carrinho"
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger me">
+                                    0
+                                </span>
+                            </span>
+                        </a>
                     </li>
                 </ul>
             </div>
