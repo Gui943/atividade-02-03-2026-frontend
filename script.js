@@ -26,7 +26,7 @@ calcularTotal();
 
 
 
-let carrinho = [];
+let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
 function adicionarCarrinho(nome, preco) {
 
@@ -36,6 +36,8 @@ function adicionarCarrinho(nome, preco) {
     };
 
     carrinho.push(produto);
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
     atualizarCarrinho();
 }
