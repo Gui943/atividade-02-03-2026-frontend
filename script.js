@@ -24,3 +24,26 @@ qtds.forEach(qtd => qtd.addEventListener('change', calcularTotal));
 
 calcularTotal();
 
+
+
+let carrinho = [];
+
+function adicionarCarrinho(nome, preco) {
+
+    const produto = {
+        nome: nome,
+        preco: preco
+    };
+
+    carrinho.push(produto);
+
+    atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+
+    let contador = document.getElementById("contador-carrinho");
+
+    contador.innerText = carrinho.length;
+
+}

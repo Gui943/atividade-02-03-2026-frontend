@@ -26,7 +26,15 @@
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><i class="bi-cart">Carrinho</i></a>
+                        <a class="nav-link active position-relative" aria-current="page" href="carrinho.html">
+                            <span class="position-relative d-inline-block">
+                                <i class="bi-cart me-3 fs-5"></i>
+                                <span id="contador-carrinho"
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger me">
+                                    0
+                                </span>
+                            </span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -50,7 +58,8 @@
                         </div>
                         <input class="qtd-produto" type="number" value=1 min="1">
                         <div style="margin-top: 10px;">
-                            <a href="#" class="btn btn-primary">Add carrinho</a>
+                            <button class="btn btn-primary" onclick="adicionarCarrinho('Produto 01', 50.00)">Add
+                                carrinho</button>
                         </div>
                     </div>
                 </div>
@@ -70,7 +79,8 @@
                         </div>
                         <input class="qtd-produto" type="number" value=1 min="1">
                         <div style="margin-top: 10px;">
-                            <a href="#" class="btn btn-primary">Add carrinho</a>
+                            <button class="btn btn-primary" onclick="adicionarCarrinho('Produto 02', 100.00)">Add
+                                carrinho</button>
                         </div>
                     </div>
                 </div>
@@ -90,7 +100,8 @@
                         </div>
                         <input class="qtd-produto" type="number" value=1 min="1">
                         <div style="margin-top: 10px;">
-                            <a href="#" class="btn btn-primary">Add carrinho</a>
+                            <button class="btn btn-primary" onclick="adicionarCarrinho('Produto 03', 155.00)">Add
+                                carrinho</button>
                         </div>
                     </div>
                 </div>
