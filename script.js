@@ -15,10 +15,7 @@ function calcularTotal() {
     const totalElemento = document.getElementById('valor-total');
 
     if (totalElemento) {
-        totalElemento.innerText = total.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        });
+        totalElemento.innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' });
     }
 }
 
@@ -28,8 +25,25 @@ const qtds = document.querySelectorAll('.qtd-produto');
 checkboxes.forEach(cb => cb.addEventListener('change', calcularTotal));
 qtds.forEach(qtd => qtd.addEventListener('change', calcularTotal));
 
-
 calcularTotal();
+
+
+function calcularTotalCarrinho(){
+
+    let total = 0;
+
+    carrinho.forEach(produto => {
+        total += Number(produto.preco);
+    });
+
+    const totalElemento = document.getElementById("total-carrinho");
+
+    if(totalElemento){
+        totalElemento.innerText =
+        total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+}
 
 
 
@@ -49,16 +63,6 @@ function adicionarCarrinho(nome, preco) {
     atualizarCarrinho();
 }
 
-function atualizarCarrinho() {
-
-    let contador = document.getElementById("contador-carrinho");
-
-    if (contador) {
-        contador.innerText = carrinho.length;
-    }
-
-}
-
 
 function mostrarCarrinho() {
 
@@ -72,7 +76,7 @@ function mostrarCarrinho() {
 
     carrinho.forEach(produto => {
 
-        total += produto.preco;
+        total += Number(produto.preco);
 
         let card = `
         <div class="card text-bg-dark mb-3 text-center" style="max-width: 50rem; margin: 20px auto;">
@@ -89,13 +93,20 @@ function mostrarCarrinho() {
 
     });
 
-    totalElemento.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    calcularTotalCarrinho();
+}
 
-    if (totalElemento) {
-        totalElemento.innerText = total.toFixed(2);
+function atualizarCarrinho() {
+
+    let contador = document.getElementById("contador-carrinho");
+
+    if (contador) {
+        contador.innerText = carrinho.length;
     }
 
 }
+
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
