@@ -15,7 +15,7 @@ function calcularTotal() {
     const totalElemento = document.getElementById('valor-total');
 
     if (totalElemento) {
-        totalElemento.innerText = total.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL' });
+        totalElemento.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 }
 
@@ -28,7 +28,7 @@ qtds.forEach(qtd => qtd.addEventListener('change', calcularTotal));
 calcularTotal();
 
 
-function calcularTotalCarrinho(){
+function calcularTotalCarrinho() {
 
     let total = 0;
 
@@ -38,9 +38,9 @@ function calcularTotalCarrinho(){
 
     const totalElemento = document.getElementById("total-carrinho");
 
-    if(totalElemento){
+    if (totalElemento) {
         totalElemento.innerText =
-        total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
 }
@@ -74,7 +74,7 @@ function mostrarCarrinho() {
 
     let total = 0;
 
-    carrinho.forEach(produto => {
+    carrinho.forEach((produto, index) => {
 
         total += Number(produto.preco);
 
@@ -86,6 +86,16 @@ function mostrarCarrinho() {
             <div class="card-body">
                 <h5>R$ ${produto.preco.toFixed(2)}</h5>
             </div>
+            <div class="text-end">
+                <div class="form-check item-produto text-start">
+                    <input class="form-check-input" type="checkbox" id="check${index}">
+                    <label class="form-check-label" for="check${index}">
+                        Selecionar
+                    </label>
+                </div>
+                <button class="btn btn-danger" onclick="removerItem(${index})">Remover</button>
+            </div>
+
         </div>
         `;
 
@@ -96,7 +106,7 @@ function mostrarCarrinho() {
     calcularTotalCarrinho();
 }
 
-function removerCarrinho(index) {
+function removerItem(index) {
     carrinho.splice(index, 1);
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
