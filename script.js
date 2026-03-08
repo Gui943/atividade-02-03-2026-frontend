@@ -1,4 +1,4 @@
-function calcularTotal(){
+function calcularTotal() {
     const checkboxes = document.querySelectorAll('.item-produto input[type="checkbox"]');
     const qtds = document.querySelectorAll('.qtd-produto');
 
@@ -12,7 +12,14 @@ function calcularTotal(){
         }
     });
 
-    document.getElementById('valor-total').innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const totalElemento = document.getElementById('valor-total');
+
+    if (totalElemento) {
+        totalElemento.innerText = total.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        });
+    }
 }
 
 const checkboxes = document.querySelectorAll('.item-produto input[type="checkbox"]');
@@ -46,6 +53,55 @@ function atualizarCarrinho() {
 
     let contador = document.getElementById("contador-carrinho");
 
-    contador.innerText = carrinho.length;
+    if (contador) {
+        contador.innerText = carrinho.length;
+    }
 
 }
+
+
+function mostrarCarrinho() {
+
+    let lista = document.getElementById("lista-carrinho");
+
+    if (!lista) return;
+
+    lista.innerHTML = "";
+
+    let total = 0;
+
+    carrinho.forEach(produto => {
+
+        total += produto.preco;
+
+        let card = `
+        <div class="card text-bg-dark mb-3 text-center" style="max-width: 50rem; margin: 20px auto;">
+            <div class="card-header">
+                <h3>${produto.nome}</h3>
+            </div>
+            <div class="card-body">
+                <h5>R$ ${produto.preco.toFixed(2)}</h5>
+            </div>
+        </div>
+        `;
+
+        lista.innerHTML += card;
+
+    });
+
+    totalElemento.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    if (totalElemento) {
+        totalElemento.innerText = total.toFixed(2);
+    }
+
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    atualizarCarrinho();
+    mostrarCarrinho();
+
+});
+console.log("Carrinho carregado:", carrinho);
