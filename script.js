@@ -33,7 +33,7 @@ function calcularTotalCarrinho(){
     let total = 0;
 
     carrinho.forEach(produto => {
-        total += Number(produto.preco);
+        total += (produto.preco);
     });
 
     const totalElemento = document.getElementById("total-carrinho");
@@ -96,6 +96,15 @@ function mostrarCarrinho() {
     calcularTotalCarrinho();
 }
 
+function removerCarrinho(index) {
+    carrinho.splice(index, 1);
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+
+    atualizarCarrinho();
+    mostrarCarrinho();
+}
+
+
 function atualizarCarrinho() {
 
     let contador = document.getElementById("contador-carrinho");
@@ -107,12 +116,9 @@ function atualizarCarrinho() {
 }
 
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
 
     atualizarCarrinho();
     mostrarCarrinho();
 
 });
-console.log("Carrinho carregado:", carrinho);
