@@ -49,11 +49,12 @@ function calcularTotalCarrinho() {
 
 let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
 
-function adicionarCarrinho(nome, preco) {
+function adicionarCarrinho(nome, preco, quantidade) {
 
     const produto = {
         nome: nome,
-        preco: preco
+        preco: preco,
+        quantidade: quantidade
     };
 
     carrinho.push(produto);
@@ -85,6 +86,7 @@ function mostrarCarrinho() {
             </div>
             <div class="card-body">
                 <h5>R$ ${produto.preco.toFixed(2)}</h5>
+                <h5 ${produto.quantidade}></h5>
             </div>
             <div class="text-end">
                 <button class="btn btn-danger" onclick="removerItem(${index})">Remover</button>
