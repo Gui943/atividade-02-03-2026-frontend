@@ -79,7 +79,7 @@ function mostrarCarrinho() {
         total += Number(produto.preco);
 
         let card = `
-        <div class="card text-bg-dark mb-3 text-center" style="max-width: 50rem; margin: 20px auto;">
+        <div class="card mb-3 text-center" style="max-width: 50rem; margin: 20px auto;">
             <div class="card-header">
                 <h3>${produto.nome}</h3>
             </div>
@@ -87,12 +87,6 @@ function mostrarCarrinho() {
                 <h5>R$ ${produto.preco.toFixed(2)}</h5>
             </div>
             <div class="text-end">
-                <div class="form-check item-produto text-start">
-                    <input class="form-check-input" type="checkbox" id="check${index}">
-                    <label class="form-check-label" for="check${index}">
-                        Selecionar
-                    </label>
-                </div>
                 <button class="btn btn-danger" onclick="removerItem(${index})">Remover</button>
             </div>
 
@@ -132,3 +126,33 @@ document.addEventListener("DOMContentLoaded", function () {
     mostrarCarrinho();
 
 });
+
+
+async function carregarDepoimento() {
+    try {
+        const resposta = await fetch("https://jsonplaceholder.typicode.com/comments?_limit=3")
+
+        const dados = await resposta.json();
+        const lista = document.getElementById("lista-depoimentos");
+
+        dados.forEach(depoimento => {
+
+            const card = `
+        <div class="col-md-4 mb-3">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">${depoimento.name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">${depoimento.email}</h6>
+              <p class="card-text">${depoimento.body}</p>
+            </div>
+          </div>
+        </div>
+        `;
+            lista.innerHTML += card;
+        });
+    } catch (erro) {
+    console.error("Erro ao carregar depoimentos:", erro);
+    }
+}
+
+carregarDepoimento();
