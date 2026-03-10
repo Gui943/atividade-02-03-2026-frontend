@@ -158,3 +158,49 @@ async function carregarDepoimento() {
 }
 
 carregarDepoimento();
+
+
+const botaoEnviar = document.getElementById("btnEnviar");
+
+botaoEnviar.addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    const nome = document.getElementById("nomeCliente").value;
+    const email = document.getElementById("emailCliente").value;
+    const mensagem = document.getElementById("obsCliente").value;
+
+    const dados = {
+        nome: nome,
+        email: email,
+        mensagem: mensagem
+    };
+
+    try {
+        const resposta = await fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(dados)
+        });
+
+        if (resposta.status === 201) {
+            mostrarAlerta("Mensagem enviada com sucesso!", "success");
+        } else {
+            mostrarAlerta("Erro ao enviar!", "danger");
+        }
+
+    } catch (erro) {
+        mostrarAlerta("Falha na requisição!", "danger");
+    }
+});
+
+function mostrarAlerta(msg, tipo) {
+    const container = document.querySelector(".container");
+
+    const alerta = document.createElement("div");
+    alerta.className = `alert alert-${tipo} mt-3`;
+    alerta.textContent = msg;
+
+    container.prepend(alerta);
+}
