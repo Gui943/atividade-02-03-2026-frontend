@@ -22,9 +22,10 @@ const produtos = [
 },
 ];
 
-function gerarProdutos(){
+function carregarProdutos(){
     const container = document.getElementById("lista-produtos");
-    produtos.forEach(produtos =>{
+
+    produtos.forEach(produto =>{
 
         const card =`
         <div class="col-md-4">
