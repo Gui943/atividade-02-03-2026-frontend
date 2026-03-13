@@ -1,33 +1,3 @@
-function calcularTotal() {
-    const checkboxes = document.querySelectorAll('.item-produto input[type="checkbox"]');
-    const qtds = document.querySelectorAll('.qtd-produto');
-
-    let total = 0;
-
-    checkboxes.forEach((checkbox, index) => {
-        if (checkbox.checked) {
-            const valor = parseFloat(checkbox.value);
-            const qtd = parseInt(qtds[index].value);
-            total += valor * qtd;
-        }
-    });
-
-    const totalElemento = document.getElementById('valor-total');
-
-    if (totalElemento) {
-        totalElemento.innerText = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    }
-}
-
-const checkboxes = document.querySelectorAll('.item-produto input[type="checkbox"]');
-const qtds = document.querySelectorAll('.qtd-produto');
-
-checkboxes.forEach(cb => cb.addEventListener('change', calcularTotal));
-qtds.forEach(qtd => qtd.addEventListener('change', calcularTotal));
-
-calcularTotal();
-
-
 function calcularTotalCarrinho() {
 
     let total = 0;
