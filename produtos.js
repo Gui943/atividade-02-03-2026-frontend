@@ -1,41 +1,48 @@
 const produtos = [
     {
-    id: 1,
-    nome: "Camiseta",
-    preco: 49.90,
-    descricao: "Descricao do item",
-    imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
-},
-{
-    id: 2,
-    nome: "Tenis",
-    preco: 100.00,
-    descricao: "Descricao do item",
-    imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
-},
-{
-    id: 2,
-    nome: "Calça",
-    preco: 69.90,
-    descricao: "Descricao do item",
-    imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
-},
+        id: 1,
+        nome: "Camiseta",
+        preco: 49.90,
+        descricao: "Descricao do item",
+        imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
+    },
+    {
+        id: 2,
+        nome: "Tenis",
+        preco: 100.00,
+        descricao: "Descricao do item",
+        imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
+    },
+    {
+        id: 2,
+        nome: "Calça",
+        preco: 69.90,
+        descricao: "Descricao do item",
+        imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
+    },
 ];
 
-function carregarProdutos(){
+function carregarProdutos() {
     const container = document.getElementById("lista-produtos");
 
-    produtos.forEach(produto =>{
+    produtos.forEach(produto => {
 
-        const card =`
+        const card = `
         <div class="col-md-4">
             <div class="card" style="width: 20rem;">
                 <img src="${produto.imagem}" class="card-img-top">
                 
                 <div class="card-body">
                     <h5 class="card-title">${produto.nome}</h5>
-                    
-                    <p class="card-text">${produto.descricao}</p>
+                    <div>
+                        <button 
+                            class="btn-detalhes
+                            data-nome=${produto.nome}
+                            data-descricao=${produto.descricao}
+                            data-preco=${produto.preco}">
+                            Ver Detalhes
+                        </button>
+                    </div>
                     
                     <p class="card-text">R$ ${produto.preco}</p>
 
