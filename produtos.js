@@ -1,33 +1,35 @@
 const produtos = [
-    {
-        id: 1,
-        nome: "Camiseta",
-        preco: 49.90,
-        descricao: "Descricao do item",
-        imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
-    },
-    {
-        id: 2,
-        nome: "Tenis",
-        preco: 100.00,
-        descricao: "Descricao do item",
-        imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
-    },
-    {
-        id: 2,
-        nome: "Calça",
-        preco: 69.90,
-        descricao: "Descricao do item",
-        imagem: "https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg"
-    },
+  {
+    id: 1,
+    nome: 'Camiseta',
+    preco: 49.9,
+    descricao: 'Descricao do item',
+    imagem:
+      'https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg',
+  },
+  {
+    id: 2,
+    nome: 'Tenis',
+    preco: 100.0,
+    descricao: 'Descricao do item',
+    imagem:
+      'https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg',
+  },
+  {
+    id: 2,
+    nome: 'Calça',
+    preco: 69.9,
+    descricao: 'Descricao do item',
+    imagem:
+      'https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg',
+  },
 ];
 
 function carregarProdutos() {
-    const container = document.getElementById("lista-produtos");
+  const container = document.getElementById('lista-produtos');
 
-    produtos.forEach(produto => {
-
-        const card = `
+  produtos.forEach((produto) => {
+    const card = `
         <div class="col-md-4">
             <div class="card" style="width: 20rem;">
                 <img src="${produto.imagem}" class="card-img-top">
@@ -59,9 +61,8 @@ function carregarProdutos() {
             </div>
         </div>`;
 
-        container.innerHTML += card;
-    });
+    container.innerHTML += card;
+  });
 }
 
 carregarProdutos();
-

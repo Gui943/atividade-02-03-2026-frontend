@@ -1,115 +1,102 @@
 function calcularTotalCarrinho() {
+  let total = 0;
 
-    let total = 0;
+  carrinho.forEach((produto) => {
+    total += produto.preco;
+  });
 
-    carrinho.forEach(produto => {
-        total += (produto.preco);
+  const totalElemento = document.getElementById('total-carrinho');
+
+  if (totalElemento) {
+    totalElemento.innerText = total.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
     });
-
-    const totalElemento = document.getElementById("total-carrinho");
-
-    if (totalElemento) {
-        totalElemento.innerText =
-            total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    }
-
+  }
 }
 
+let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
+// function adicionarCarrinho(nome, preco, quantidade) {
+//   const produto = {
+//     nome: nome,
+//     preco: preco,
+//     quantidade: quantidade,
+//   };
 
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+//   carrinho.push(produto);
 
-function adicionarCarrinho(nome, preco, quantidade) {
+//   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-    const produto = {
-        nome: nome,
-        preco: preco,
-        quantidade: quantidade
-    };
-
-    carrinho.push(produto);
-
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-
-    atualizarCarrinho();
-}
-
+//   atualizarCarrinho();
+// };
 
 function mostrarCarrinho() {
+  let lista = document.getElementById('lista-carrinho');
 
-    let lista = document.getElementById("lista-carrinho");
+  if (!lista) return;
 
-    if (!lista) return;
+  lista.innerHTML = '';
 
-    lista.innerHTML = "";
+  //   let total = 0;
 
-    let total = 0;
+  //   carrinho.forEach((produto, index) => {
+  //     total += Number(produto.preco);
 
-    carrinho.forEach((produto, index) => {
+  //     let card = `
+  //         <div class="card mb-3 text-center" style="max-width: 50rem; margin: 20px auto;">
+  //             <div class="card-header">
+  //                 <h3>${produto.nome}</h3>
+  //             </div>
+  //             <div class="card-body">
+  //                 <h5>R$ ${produto.preco.toFixed(2)}</h5>
+  //                 <h5 ${produto.quantidade}></h5>
+  //             </div>
+  //             <div class="text-end">
+  //                 <button class="btn btn-danger" onclick="removerItem(${index})">Remover</button>
+  //             </div>
 
-        total += Number(produto.preco);
+  //         </div>
+  //         `;
 
-        let card = `
-        <div class="card mb-3 text-center" style="max-width: 50rem; margin: 20px auto;">
-            <div class="card-header">
-                <h3>${produto.nome}</h3>
-            </div>
-            <div class="card-body">
-                <h5>R$ ${produto.preco.toFixed(2)}</h5>
-                <h5 ${produto.quantidade}></h5>
-            </div>
-            <div class="text-end">
-                <button class="btn btn-danger" onclick="removerItem(${index})">Remover</button>
-            </div>
+  //     lista.innerHTML += card;
+  //   });
 
-        </div>
-        `;
-
-        lista.innerHTML += card;
-
-    });
-
-    calcularTotalCarrinho();
+  calcularTotalCarrinho();
 }
 
-function removerItem(index) {
-    carrinho.splice(index, 1);
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+// function removerItem(index) {
+//   carrinho.splice(index, 1);
+//   localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-    atualizarCarrinho();
-    mostrarCarrinho();
-}
-
+//   atualizarCarrinho();
+//   mostrarCarrinho();
+// }
 
 function atualizarCarrinho() {
+  let contador = document.getElementById('contador-carrinho');
 
-    let contador = document.getElementById("contador-carrinho");
-
-    if (contador) {
-        contador.innerText = carrinho.length;
-    }
-
+  if (contador) {
+    contador.innerText = carrinho.length;
+  }
 }
 
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    atualizarCarrinho();
-    mostrarCarrinho();
-
+document.addEventListener('DOMContentLoaded', function () {
+  atualizarCarrinho();
+  mostrarCarrinho();
 });
 
-
 async function carregarDepoimento() {
-    try {
-        const resposta = await fetch("https://jsonplaceholder.typicode.com/comments?_limit=3")
+  try {
+    const resposta = await fetch(
+      'https://jsonplaceholder.typicode.com/comments?_limit=3'
+    );
 
-        const dados = await resposta.json();
-        const lista = document.getElementById("lista-depoimentos");
+    const dados = await resposta.json();
+    const lista = document.getElementById('lista-depoimentos');
 
-        dados.forEach(depoimento => {
-
-            const card = `
+    dados.forEach((depoimento) => {
+      const card = `
         <div class="col-md-4 mb-3">
           <div class="card h-100 shadow-sm">
             <div class="card-body">
@@ -120,57 +107,57 @@ async function carregarDepoimento() {
           </div>
         </div>
         `;
-            lista.innerHTML += card;
-        });
-    } catch (erro) {
-    console.error("Erro ao carregar depoimentos:", erro);
-    }
+      lista.innerHTML += card;
+    });
+  } catch (erro) {
+    console.error('Erro ao carregar depoimentos:', erro);
+  }
 }
 
 carregarDepoimento();
 
+const botaoEnviar = document.getElementById('btnEnviar');
 
-const botaoEnviar = document.getElementById("btnEnviar");
-
-botaoEnviar.addEventListener("click", async function (event) {
+(botaoEnviar.addEventListener('click'),
+  async function (event) {
     event.preventDefault();
+  });
 
-    const nome = document.getElementById("nomeCliente").value;
-    const email = document.getElementById("emailCliente").value;
-    const mensagem = document.getElementById("obsCliente").value;
+//   const nome = document.getElementById("nomeCliente").value;
+//   const email = document.getElementById("emailCliente").value;
+//   const mensagem = document.getElementById("obsCliente").value;
 
-    const dados = {
-        nome: nome,
-        email: email,
-        mensagem: mensagem
-    };
+//   const dados = {
+//     nome: nome,
+//     email: email,
+//     mensagem: mensagem,
+//   };
 
-    try {
-        const resposta = await fetch("https://jsonplaceholder.typicode.com/posts", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(dados)
-        });
+//   try {
+//     const resposta = await fetch("https://jsonplaceholder.typicode.com/posts", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(dados),
+//     });
 
-        if (resposta.status === 201) {
-            mostrarAlerta("Mensagem enviada com sucesso!", "success");
-        } else {
-            mostrarAlerta("Erro ao enviar!", "danger");
-        }
+//     if (resposta.status === 201) {
+//       mostrarAlerta("Mensagem enviada com sucesso!", "success");
+//     } else {
+//       mostrarAlerta("Erro ao enviar!", "danger");
+//     }
+//   } catch (erro) {
+//     mostrarAlerta("Falha na requisição!", "danger");
+//   }
+// });
 
-    } catch (erro) {
-        mostrarAlerta("Falha na requisição!", "danger");
-    }
-});
+// function mostrarAlerta(msg, tipo) {
+//   const container = document.querySelector(".container");
 
-function mostrarAlerta(msg, tipo) {
-    const container = document.querySelector(".container");
+//   const alerta = document.createElement("div");
+//   alerta.className = `alert alert-${tipo} mt-3`;
+//   alerta.textContent = msg;
 
-    const alerta = document.createElement("div");
-    alerta.className = `alert alert-${tipo} mt-3`;
-    alerta.textContent = msg;
-
-    container.prepend(alerta);
-}
+//   container.prepend(alerta);
+// };
