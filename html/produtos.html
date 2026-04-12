@@ -44,16 +44,30 @@
         </div>
     </nav>
 
+
     <div class="container">
-        <h1 class="text-center mt-5">Lançamento Oficial</h1>
+        <div class="row" id="lista-produtos"></div>
     </div>
-    <script src="script.js"></script>
 
-
-    <div class="container mt-5">
-        <h2>O que nossos clientes dizem</h2>
-        <div class="row" id="lista-depoimentos"></div>
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn btn-primary"></button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="js/carrinho.js"></script>
+    <script src="js/produtos.js"></script>
+
 </body>
-
-</html>
