@@ -16,7 +16,7 @@ const produtos = [
       'https://img.freepik.com/fotos-gratis/vista-da-geleira-a-noite_23-2151795222.jpg',
   },
   {
-    id: 2,
+    id: 3,
     nome: 'Calça',
     preco: 69.9,
     descricao: 'Descricao do item',
