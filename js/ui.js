@@ -27,6 +27,29 @@ export function mostrarAlerta(msg, tipo) {
   setTimeout(() => alerta.remove(), 4000);
 }
 
+function aplicarTema(tema) {
+  const html = document.documentElement;
+  html.dataset.bsTheme = tema === 'dark' ? 'dark' : 'light';
+  localStorage.setItem('tema', tema);
+}
+
+function alternarTema() {
+  const temaAtual = localStorage.getItem('tema') || 'light';
+  aplicarTema(temaAtual === 'dark' ? 'light' : 'dark');
+}
+
+export function initThemeToggle() {
+  const botaoTema = document.getElementById('botaoTema');
+  if (!botaoTema) return;
+
+  const temaSalvo = localStorage.getItem('tema') || 'light';
+  aplicarTema(temaSalvo);
+
+  botaoTema.addEventListener('click', () => {
+    alternarTema();
+  });
+}
+
 export function renderDepoimentos(lista, depoimentos) {
   if (!lista || !Array.isArray(depoimentos)) return;
   lista.innerHTML = '';

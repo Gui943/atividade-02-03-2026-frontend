@@ -2,9 +2,10 @@ import { initProdutos } from './produtos.js';
 import { initCarrinho } from './carrinho.js';
 import { initDepoimentos } from './depoimentos.js';
 import { initContatos } from './contatos.js';
-import { initProdutoModal } from './ui.js';
+import { initProdutoModal, initThemeToggle } from './ui.js';
 
 function inicializarPagina() {
+  initThemeToggle();
   if (document.getElementById('lista-produtos')) {
     initProdutos();
   }

@@ -44,10 +44,10 @@ export function initProdutos() {
           <p class="card-text">${produto.descricao}</p>
           <p class="card-text">R$ ${produto.preco.toFixed(2)}</p>
           <div class="d-flex gap-2 mb-2">
-            <button class="btn btn-outline-secondary flex-fill" type="button" data-bs-toggle="modal" data-bs-target="#produtoModal" data-nome="${produto.nome}" data-descricao="${produto.descricao}" data-preco="${produto.preco.toFixed(2)}">
+            <button class="btn btn-outline-primary btn-sm flex-fill" type="button" data-bs-toggle="modal" data-bs-target="#produtoModal" data-nome="${produto.nome}" data-descricao="${produto.descricao}" data-preco="${produto.preco.toFixed(2)}">
               Ver Detalhes
             </button>
-            <button class="btn btn-primary flex-fill btn-add-cart" type="button" data-nome="${produto.nome}" data-preco="${produto.preco}">
+            <button class="btn btn-primary btn-sm flex-fill btn-add-cart" type="button" data-nome="${produto.nome}" data-preco="${produto.preco}">
               Adicionar ao carrinho
             </button>
           </div>
