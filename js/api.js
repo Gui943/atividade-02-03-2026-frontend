@@ -19,3 +19,17 @@ export async function enviarContato(dados) {
 
   return resposta;
 }
+
+export async function buscarEnderecoPorCep(cep) {
+  const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+  if (!resposta.ok) {
+    throw new Error('Erro ao buscar o CEP');
+  }
+
+  const dados = await resposta.json();
+  if (dados.erro) {
+    throw new Error('CEP inválido');
+  }
+
+  return dados;
+}

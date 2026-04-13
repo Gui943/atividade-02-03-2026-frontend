@@ -53,6 +53,28 @@
             <label for="emailCliente" class="form-label">Email</label>
             <input type="email" class="form-control" id="emailCliente" placeholder="nome@gmail.com" required>
         </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="cepCliente" class="form-label">CEP</label>
+                <input type="text" class="form-control" id="cepCliente" placeholder="00000-000" maxlength="9" inputmode="numeric" pattern="\d{5}-?\d{3}" title="Digite um CEP válido, apenas números">
+            </div>
+            <div class="col-md-8 mb-3">
+                <label for="ruaCliente" class="form-label">Rua</label>
+                <input type="text" class="form-control" id="ruaCliente" placeholder="Rua" >
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="bairroCliente" class="form-label">Bairro</label>
+                <input type="text" class="form-control" id="bairroCliente" placeholder="Bairro">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="cidadeCliente" class="form-label">Cidade</label>
+                <input type="text" class="form-control" id="cidadeCliente" placeholder="Cidade">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="estadoCliente" class="form-label">Estado</label>
+                <input type="text" class="form-control" id="estadoCliente" placeholder="UF" maxlength="2">
+            </div>
+        </div>
         <div class="mb-3">
             <label for="obsCliente" class="form-label">Obs</label>
             <textarea class="form-control" id="obsCliente" rows="3"></textarea>
