@@ -47,3 +47,24 @@ export function renderDepoimentos(lista, depoimentos) {
     lista.appendChild(card);
   });
 }
+
+export function initProdutoModal() {
+  const modal = document.getElementById('produtoModal');
+  if (!modal) return;
+
+  modal.addEventListener('show.bs.modal', (event) => {
+    const button = event.relatedTarget;
+    if (!button) return;
+
+    const nome = button.dataset.nome || '';
+    const descricao = button.dataset.descricao || '';
+    const preco = button.dataset.preco || '';
+
+    const titulo = modal.querySelector('.modal-title');
+    const corpo = modal.querySelector('.modal-body p');
+
+    if (titulo) titulo.textContent = nome;
+    if (corpo)
+      corpo.textContent = `${descricao} - R$ ${Number(preco).toFixed(2)}`;
+  });
+}

@@ -2,6 +2,7 @@ import { initProdutos } from './produtos.js';
 import { initCarrinho } from './carrinho.js';
 import { initDepoimentos } from './depoimentos.js';
 import { initContatos } from './contatos.js';
+import { initProdutoModal } from './ui.js';
 
 function inicializarPagina() {
   if (document.getElementById('lista-produtos')) {
@@ -14,6 +15,10 @@ function inicializarPagina() {
 
   if (document.getElementById('lista-depoimentos')) {
     initDepoimentos();
+  }
+
+  if (document.getElementById('produtoModal')) {
+    initProdutoModal();
   }
 
   if (
