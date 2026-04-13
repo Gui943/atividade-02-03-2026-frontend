@@ -1,3 +1,4 @@
+import '../styles.scss';
 import { initProdutos } from './produtos.js';
 import { initCarrinho } from './carrinho.js';
 import { initDepoimentos } from './depoimentos.js';
@@ -10,9 +11,7 @@ function inicializarPagina() {
     initProdutos();
   }
 
-  if (document.getElementById('lista-carrinho')) {
-    initCarrinho();
-  }
+  initCarrinho();
 
   if (document.getElementById('lista-depoimentos')) {
     initDepoimentos();

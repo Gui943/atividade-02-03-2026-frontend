@@ -58,19 +58,19 @@ function mostrarCarrinho() {
 
   carrinho.forEach((produto, index) => {
     const card = document.createElement('div');
-    card.className = 'card mb-3 text-center';
+    card.className = 'card mb-3';
     card.style.maxWidth = '50rem';
     card.style.margin = '20px auto';
     card.innerHTML = `
-      <div class="card-header">
+      <div class="card-header text-center">
         <h3>${produto.nome}</h3>
       </div>
-      <div class="card-body">
+      <div class="card-body text-center">
         <p class="mb-1">Preço: ${produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
         <p class="mb-1">Quantidade: ${produto.quantidade}</p>
       </div>
-      <div class="text-end mb-3">
-        <button class="btn btn-danger btn-remove-item" data-index="${index}">Remover</button>
+      <div class="card-footer text-end bg-transparent border-top-0">
+        <button class="btn btn-danger btn-sm" data-index="${index}">Remover</button>
       </div>
     `;
 
@@ -95,7 +95,7 @@ export function initCarrinho() {
   if (!lista) return;
 
   lista.addEventListener('click', (event) => {
-    const botao = event.target.closest('.btn-remove-item');
+    const botao = event.target.closest('button[data-index]');
     if (!botao) return;
     const index = Number(botao.dataset.index);
     removerItem(index);

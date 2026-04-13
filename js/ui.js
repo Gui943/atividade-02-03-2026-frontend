@@ -27,15 +27,40 @@ export function mostrarAlerta(msg, tipo) {
   setTimeout(() => alerta.remove(), 4000);
 }
 
-function aplicarTema(tema) {
-  const html = document.documentElement;
-  html.dataset.bsTheme = tema === 'dark' ? 'dark' : 'light';
-  localStorage.setItem('tema', tema);
+const temas = ['light', 'dark', 'green', 'purple'];
+
+function formatarNomeTema(tema) {
+  if (tema === 'green') return 'Verde';
+  if (tema === 'purple') return 'Roxo';
+  return tema === 'dark' ? 'Escuro' : 'Claro';
 }
 
-function alternarTema() {
+function aplicarTema(tema) {
+  const html = document.documentElement;
+  html.classList.remove('theme-green', 'theme-purple');
+  html.dataset.bsTheme = tema === 'dark' ? 'dark' : 'light';
+  html.dataset.theme = tema;
+
+  if (tema === 'green') {
+    html.classList.add('theme-green');
+  }
+
+  if (tema === 'purple') {
+    html.classList.add('theme-purple');
+  }
+
+  localStorage.setItem('tema', tema);
+
+  const botaoTema = document.getElementById('botaoTema');
+  if (botaoTema) {
+    botaoTema.textContent = `Mudar tema (${formatarNomeTema(tema)})`;
+  }
+}
+
+function proximoTema() {
   const temaAtual = localStorage.getItem('tema') || 'light';
-  aplicarTema(temaAtual === 'dark' ? 'light' : 'dark');
+  const indice = temas.indexOf(temaAtual);
+  return temas[(indice + 1) % temas.length];
 }
 
 export function initThemeToggle() {
@@ -46,7 +71,7 @@ export function initThemeToggle() {
   aplicarTema(temaSalvo);
 
   botaoTema.addEventListener('click', () => {
-    alternarTema();
+    aplicarTema(proximoTema());
   });
 }
 

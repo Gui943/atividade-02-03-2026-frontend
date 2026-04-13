@@ -1,0 +1,183 @@
+$font-style: normal;
+$font-weight: 400;
+$font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$font-color: #212529;
+
+$theme-light: (
+  background: #f4f5ff,
+  surface: #ffffff,
+  primary: #3b72ff,
+  secondary: #60a5fa,
+  text: #212529,
+  muted: #6c757d,
+  border: #dde2ff,
+  nav-bg: #ffffff,
+  body-bg: #f4f5ff,
+);
+
+$theme-green: (
+  background: #ecfdf5,
+  surface: #f0fdf4,
+  primary: #16a34a,
+  secondary: #4ade80,
+  text: #065f46,
+  muted: #166534,
+  border: #a7f3d0,
+  nav-bg: #dcfce7,
+  body-bg: #ecfdf5,
+);
+
+$theme-purple: (
+  background: #f5f3ff,
+  surface: #faf5ff,
+  primary: #7c3aed,
+  secondary: #c084fc,
+  text: #4c1d95,
+  muted: #6d28d9,
+  border: #d8b4fe,
+  nav-bg: #ede9fe,
+  body-bg: #f5f3ff,
+);
+
+@function theme-value($theme, $key) {
+  @return map-get($theme, $key);
+}
+
+:root {
+  font-family: $font-family;
+  font-style: $font-style;
+  font-weight: $font-weight;
+  color: $font-color;
+  --app-bg: #{theme-value($theme-light, background)};
+  --app-surface: #{theme-value($theme-light, surface)};
+  --app-primary: #{theme-value($theme-light, primary)};
+  --app-secondary: #{theme-value($theme-light, secondary)};
+  --app-text: #{theme-value($theme-light, text)};
+  --app-muted: #{theme-value($theme-light, muted)};
+  --app-border: #{theme-value($theme-light, border)};
+  --app-nav-bg: #{theme-value($theme-light, nav-bg)};
+  --app-body-bg: #{theme-value($theme-light, body-bg)};
+}
+
+html.theme-green {
+  --app-bg: #{theme-value($theme-green, background)};
+  --app-surface: #{theme-value($theme-green, surface)};
+  --app-primary: #{theme-value($theme-green, primary)};
+  --app-secondary: #{theme-value($theme-green, secondary)};
+  --app-text: #{theme-value($theme-green, text)};
+  --app-muted: #{theme-value($theme-green, muted)};
+  --app-border: #{theme-value($theme-green, border)};
+  --app-nav-bg: #{theme-value($theme-green, nav-bg)};
+  --app-body-bg: #{theme-value($theme-green, body-bg)};
+}
+
+html.theme-purple {
+  --app-bg: #{theme-value($theme-purple, background)};
+  --app-surface: #{theme-value($theme-purple, surface)};
+  --app-primary: #{theme-value($theme-purple, primary)};
+  --app-secondary: #{theme-value($theme-purple, secondary)};
+  --app-text: #{theme-value($theme-purple, text)};
+  --app-muted: #{theme-value($theme-purple, muted)};
+  --app-border: #{theme-value($theme-purple, border)};
+  --app-nav-bg: #{theme-value($theme-purple, nav-bg)};
+  --app-body-bg: #{theme-value($theme-purple, body-bg)};
+}
+
+html[data-bs-theme="dark"] {
+  --app-bg: #0d1117;
+  --app-surface: #161b22;
+  --app-primary: #3b72ff;
+  --app-secondary: #94a3b8;
+  --app-text: #f8fafc;
+  --app-muted: #94a3b8;
+  --app-border: #2d3748;
+  --app-nav-bg: #131a26;
+  --app-body-bg: #0d1117;
+}
+
+body {
+  background-color: var(--app-body-bg);
+  color: var(--app-text);
+}
+
+body,
+.navbar,
+.card,
+.modal-content,
+.form-control,
+.alert {
+  background-color: var(--app-surface) !important;
+  color: var(--app-text) !important;
+}
+
+.navbar {
+  background-color: var(--app-nav-bg) !important;
+}
+
+.navbar .nav-link,
+.navbar-brand,
+.navbar-toggler-icon {
+  color: var(--app-text) !important;
+}
+
+.card {
+  border-color: var(--app-border);
+}
+
+.btn {
+  background-color: var(--app-surface) !important;
+  color: var(--app-text) !important;
+  border-color: var(--app-border) !important;
+}
+
+.btn-primary {
+  background-color: var(--app-primary) !important;
+  border-color: var(--app-primary) !important;
+  color: #fff !important;
+}
+
+.btn-outline-primary {
+  color: var(--app-primary) !important;
+  border-color: var(--app-primary) !important;
+}
+
+.btn-outline-secondary {
+  color: var(--app-secondary) !important;
+  border-color: var(--app-secondary) !important;
+}
+
+.form-control {
+  background-color: var(--app-surface) !important;
+  color: var(--app-text) !important;
+  border-color: var(--app-border) !important;
+}
+
+.form-label,
+.nav-link,
+.card-text,
+.card-title,
+.modal-body,
+.modal-header,
+.modal-footer,
+.alert,
+body {
+  color: var(--app-text) !important;
+}
+
+.text-muted {
+  color: var(--app-muted) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label,
+button,
+input,
+textarea {
+  font-style: $font-style;
+  font-weight: $font-weight;
+}
