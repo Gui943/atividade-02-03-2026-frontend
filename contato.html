@@ -44,24 +44,23 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <form id="form-contato" class="container mt-5">
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nome</label>
+            <label for="nomeCliente" class="form-label">Nome</label>
             <input type="text" class="form-control" id="nomeCliente" placeholder="Seu Nome" required>
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <label for="emailCliente" class="form-label">Email</label>
             <input type="email" class="form-control" id="emailCliente" placeholder="nome@gmail.com" required>
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Obs</label>
+            <label for="obsCliente" class="form-label">Obs</label>
             <textarea class="form-control" id="obsCliente" rows="3"></textarea>
         </div>
         <div>
-            <button id="btnEnviar" class="btn btn-success">Enviar</button>
+            <button id="btnEnviar" class="btn btn-success" type="submit">Enviar</button>
         </div>
-    </div>
+    </form>
     
-    <script src="js/carrinho.js"></script>
-    <script src="js/contatos.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>

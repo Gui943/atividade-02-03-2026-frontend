@@ -6,9 +6,12 @@ function salvarCarrinho() {
 }
 
 function calcularTotalCarrinho() {
-  const total = carrinho.reduce((soma, produto) => soma + Number(produto.preco) * Number(produto.quantidade || 1), 0);
+  const total = carrinho.reduce(
+    (soma, produto) =>
+      soma + Number(produto.preco) * Number(produto.quantidade || 1),
+    0
+  );
   const totalElemento = document.getElementById('total-carrinho');
-
   if (totalElemento) {
     totalElemento.innerText = total.toLocaleString('pt-BR', {
       style: 'currency',
@@ -17,7 +20,7 @@ function calcularTotalCarrinho() {
   }
 }
 
-function adicionarCarrinho(nome, preco, quantidade = 1) {
+export function adicionarCarrinho(nome, preco, quantidade = 1) {
   const produto = {
     nome,
     preco: Number(preco),
@@ -48,28 +51,30 @@ function mostrarCarrinho() {
   lista.innerHTML = '';
 
   if (carrinho.length === 0) {
-    lista.innerHTML = '<p class="text-center">Seu carrinho est· vazio.</p>';
+    lista.innerHTML = '<p class="text-center">Seu carrinho est√° vazio.</p>';
     calcularTotalCarrinho();
     return;
   }
 
   carrinho.forEach((produto, index) => {
-    const card = `
-      <div class="card mb-3 text-center" style="max-width: 50rem; margin: 20px auto;">
-        <div class="card-header">
-          <h3>${produto.nome}</h3>
-        </div>
-        <div class="card-body">
-          <p class="mb-1">PreÁo: ${produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-          <p class="mb-1">Quantidade: ${produto.quantidade}</p>
-        </div>
-        <div class="text-end mb-3">
-          <button class="btn btn-danger" onclick="removerItem(${index})">Remover</button>
-        </div>
+    const card = document.createElement('div');
+    card.className = 'card mb-3 text-center';
+    card.style.maxWidth = '50rem';
+    card.style.margin = '20px auto';
+    card.innerHTML = `
+      <div class="card-header">
+        <h3>${produto.nome}</h3>
+      </div>
+      <div class="card-body">
+        <p class="mb-1">Pre√ßo: ${produto.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
+        <p class="mb-1">Quantidade: ${produto.quantidade}</p>
+      </div>
+      <div class="text-end mb-3">
+        <button class="btn btn-danger btn-remove-item" data-index="${index}">Remover</button>
       </div>
     `;
 
-    lista.innerHTML += card;
+    lista.appendChild(card);
   });
 
   calcularTotalCarrinho();
@@ -82,10 +87,17 @@ function atualizarCarrinho() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+export function initCarrinho() {
   atualizarCarrinho();
   mostrarCarrinho();
-});
 
-window.adicionarCarrinho = adicionarCarrinho;
-window.removerItem = removerItem;
+  const lista = document.getElementById('lista-carrinho');
+  if (!lista) return;
+
+  lista.addEventListener('click', (event) => {
+    const botao = event.target.closest('.btn-remove-item');
+    if (!botao) return;
+    const index = Number(botao.dataset.index);
+    removerItem(index);
+  });
+}

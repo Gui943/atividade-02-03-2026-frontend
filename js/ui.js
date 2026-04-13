@@ -1,0 +1,49 @@
+function getAlertaFlutuanteContainer() {
+  let wrapper = document.getElementById('alerta-flutuante-wrapper');
+  if (!wrapper) {
+    wrapper = document.createElement('div');
+    wrapper.id = 'alerta-flutuante-wrapper';
+    wrapper.style.position = 'fixed';
+    wrapper.style.top = '20px';
+    wrapper.style.right = '20px';
+    wrapper.style.zIndex = '1050';
+    wrapper.style.width = 'auto';
+    wrapper.style.maxWidth = '360px';
+    wrapper.style.pointerEvents = 'none';
+    document.body.appendChild(wrapper);
+  }
+  return wrapper;
+}
+
+export function mostrarAlerta(msg, tipo) {
+  const wrapper = getAlertaFlutuanteContainer();
+  const alerta = document.createElement('div');
+  alerta.className = `alert alert-${tipo} shadow`;
+  alerta.textContent = msg;
+  alerta.style.marginBottom = '10px';
+  alerta.style.pointerEvents = 'auto';
+
+  wrapper.appendChild(alerta);
+  setTimeout(() => alerta.remove(), 4000);
+}
+
+export function renderDepoimentos(lista, depoimentos) {
+  if (!lista || !Array.isArray(depoimentos)) return;
+  lista.innerHTML = '';
+
+  depoimentos.forEach((depoimento) => {
+    const card = document.createElement('div');
+    card.className = 'col-md-4 mb-3';
+    card.innerHTML = `
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">${depoimento.name}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">${depoimento.email}</h6>
+          <p class="card-text">${depoimento.body}</p>
+        </div>
+      </div>
+    `;
+
+    lista.appendChild(card);
+  });
+}

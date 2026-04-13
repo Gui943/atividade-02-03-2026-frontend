@@ -1,3 +1,5 @@
+import { adicionarCarrinho } from './carrinho.js';
+
 const produtos = [
   {
     id: 1,
@@ -25,31 +27,44 @@ const produtos = [
   },
 ];
 
-function carregarProdutos() {
+export function initProdutos() {
   const container = document.getElementById('lista-produtos');
   if (!container) return;
 
   container.innerHTML = '';
 
   produtos.forEach((produto) => {
-    const card = `
-      <div class="col-md-4">
-        <div class="card" style="width: 20rem;">
-          <img src="${produto.imagem}" class="card-img-top" alt="${produto.nome}">
-          <div class="card-body">
-            <h5 class="card-title">${produto.nome}</h5>
-            <p class="card-text">${produto.descricao}</p>
-            <p class="card-text">R$ ${produto.preco.toFixed(2)}</p>
-            <input class="qtd-produto form-control mb-2" type="number" value="1" min="1">
-            <button class="btn btn-primary w-100" onclick="adicionarCarrinho('${produto.nome}', ${produto.preco}, this.closest('.card').querySelector('.qtd-produto').value)">
-              Adicionar ao carrinho
-            </button>
-          </div>
+    const card = document.createElement('div');
+    card.className = 'col-md-4';
+    card.innerHTML = `
+      <div class="card" style="width: 20rem;">
+        <img src="${produto.imagem}" class="card-img-top" alt="${produto.nome}">
+        <div class="card-body">
+          <h5 class="card-title">${produto.nome}</h5>
+          <p class="card-text">${produto.descricao}</p>
+          <p class="card-text">R$ ${produto.preco.toFixed(2)}</p>
+          <input class="qtd-produto form-control mb-2" type="number" value="1" min="1">
+          <button class="btn btn-primary w-100 btn-add-cart" type="button" data-nome="${produto.nome}" data-preco="${produto.preco}">
+            Adicionar ao carrinho
+          </button>
         </div>
       </div>`;
 
-    container.innerHTML += card;
+    container.appendChild(card);
+  });
+
+  container.addEventListener('click', (event) => {
+    const botao = event.target.closest('.btn-add-cart');
+    if (!botao) return;
+
+    const card = botao.closest('.card');
+    const quantidadeInput = card.querySelector('.qtd-produto');
+    const quantidade = Number(quantidadeInput?.value) || 1;
+
+    adicionarCarrinho(
+      botao.dataset.nome,
+      Number(botao.dataset.preco),
+      quantidade
+    );
   });
 }
-
-carregarProdutos();
