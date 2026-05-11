@@ -57,7 +57,7 @@ export function initProdutos() {
     container.appendChild(card);
   });
 
-  container.addEventListener('click', (event) => {
+  container.addEventListener('click', (event: any) => {
     const botao = event.target.closest('.btn-add-cart');
     if (!botao) return;
 
