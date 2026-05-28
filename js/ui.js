@@ -68,7 +68,7 @@ export function initThemeToggle() {
   if (!botaoTema) return;
 
   const temaSalvo = localStorage.getItem('tema') || 'light';
-  aplicarTema(temaSalvo);
+  botaoTema.textContent = `Mudar tema (${formatarNomeTema(temaSalvo)})`;
 
   botaoTema.addEventListener('click', () => {
     aplicarTema(proximoTema());

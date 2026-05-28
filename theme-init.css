@@ -1,0 +1,120 @@
+:root {
+  --app-bg: #f4f5ff;
+  --app-surface: #ffffff;
+  --app-primary: #3b72ff;
+  --app-secondary: #60a5fa;
+  --app-text: #212529;
+  --app-muted: #6c757d;
+  --app-border: #dde2ff;
+  --app-nav-bg: #ffffff;
+  --app-body-bg: #f4f5ff;
+}
+
+html.theme-green {
+  --app-bg: #ecfdf5;
+  --app-surface: #f0fdf4;
+  --app-primary: #16a34a;
+  --app-secondary: #4ade80;
+  --app-text: #065f46;
+  --app-muted: #166534;
+  --app-border: #a7f3d0;
+  --app-nav-bg: #dcfce7;
+  --app-body-bg: #ecfdf5;
+}
+
+html.theme-purple {
+  --app-bg: #f5f3ff;
+  --app-surface: #faf5ff;
+  --app-primary: #7c3aed;
+  --app-secondary: #c084fc;
+  --app-text: #4c1d95;
+  --app-muted: #6d28d9;
+  --app-border: #d8b4fe;
+  --app-nav-bg: #ede9fe;
+  --app-body-bg: #f5f3ff;
+}
+
+html[data-bs-theme="dark"] {
+  --app-bg: #0d1117;
+  --app-surface: #161b22;
+  --app-primary: #3b72ff;
+  --app-secondary: #94a3b8;
+  --app-text: #f8fafc;
+  --app-muted: #94a3b8;
+  --app-border: #2d3748;
+  --app-nav-bg: #131a26;
+  --app-body-bg: #0d1117;
+}
+
+body {
+  background-color: var(--app-body-bg);
+  color: var(--app-text);
+}
+
+body,
+.navbar,
+.card,
+.modal-content,
+.form-control,
+.alert {
+  background-color: var(--app-surface) !important;
+  color: var(--app-text) !important;
+}
+
+.navbar {
+  background-color: var(--app-nav-bg) !important;
+}
+
+.navbar .nav-link,
+.navbar-brand,
+.navbar-toggler-icon {
+  color: var(--app-text) !important;
+}
+
+.card {
+  border-color: var(--app-border);
+}
+
+.btn {
+  background-color: var(--app-surface) !important;
+  color: var(--app-text) !important;
+  border-color: var(--app-border) !important;
+}
+
+.btn-primary {
+  background-color: var(--app-primary) !important;
+  border-color: var(--app-primary) !important;
+  color: #fff !important;
+}
+
+.btn-outline-primary {
+  color: var(--app-primary) !important;
+  border-color: var(--app-primary) !important;
+}
+
+.btn-outline-secondary {
+  color: var(--app-secondary) !important;
+  border-color: var(--app-secondary) !important;
+}
+
+.form-control {
+  background-color: var(--app-surface) !important;
+  color: var(--app-text) !important;
+  border-color: var(--app-border) !important;
+}
+
+.form-label,
+.nav-link,
+.card-text,
+.card-title,
+.modal-body,
+.modal-header,
+.modal-footer,
+.alert,
+body {
+  color: var(--app-text) !important;
+}
+
+.text-muted {
+  color: var(--app-muted) !important;
+}
