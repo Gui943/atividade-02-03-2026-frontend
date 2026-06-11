@@ -15,7 +15,7 @@ function getAlertaFlutuanteContainer() {
   return wrapper;
 }
 
-export function mostrarAlerta(msg, tipo) {
+export function mostrarAlerta(msg: string, tipo: string) {
   const wrapper = getAlertaFlutuanteContainer();
   const alerta = document.createElement('div');
   alerta.className = `alert alert-${tipo} shadow`;
@@ -29,13 +29,13 @@ export function mostrarAlerta(msg, tipo) {
 
 const temas = ['light', 'dark', 'green', 'purple'];
 
-function formatarNomeTema(tema) {
+function formatarNomeTema(tema: string) {
   if (tema === 'green') return 'Verde';
   if (tema === 'purple') return 'Roxo';
   return tema === 'dark' ? 'Escuro' : 'Claro';
 }
 
-function aplicarTema(tema) {
+function aplicarTema(tema: string) {
   const html = document.documentElement;
   html.classList.remove('theme-green', 'theme-purple');
   html.dataset.bsTheme = tema === 'dark' ? 'dark' : 'light';
@@ -75,7 +75,10 @@ export function initThemeToggle() {
   });
 }
 
-export function renderDepoimentos(lista, depoimentos) {
+export function renderDepoimentos(
+  lista: HTMLElement | null,
+  depoimentos: any[]
+) {
   if (!lista || !Array.isArray(depoimentos)) return;
   lista.innerHTML = '';
 
@@ -100,7 +103,7 @@ export function initProdutoModal() {
   const modal = document.getElementById('produtoModal');
   if (!modal) return;
 
-  modal.addEventListener('show.bs.modal', (event) => {
+  modal.addEventListener('show.bs.modal', (event: any) => {
     const button = event.relatedTarget;
     if (!button) return;
 

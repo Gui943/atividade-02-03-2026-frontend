@@ -1,5 +1,5 @@
 const CART_KEY = 'carrinho';
-let carrinho = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+let carrinho = JSON.parse(localStorage.getItem(CART_KEY) ?? '[]');
 
 function salvarCarrinho() {
   localStorage.setItem(CART_KEY, JSON.stringify(carrinho));
@@ -7,7 +7,7 @@ function salvarCarrinho() {
 
 function calcularTotalCarrinho() {
   const total = carrinho.reduce(
-    (soma, produto) =>
+    (soma: number, produto: any) =>
       soma + Number(produto.preco) * Number(produto.quantidade || 1),
     0
   );
@@ -20,7 +20,11 @@ function calcularTotalCarrinho() {
   }
 }
 
-export function adicionarCarrinho(nome, preco, quantidade = 1) {
+export function adicionarCarrinho(
+  nome: string,
+  preco: number,
+  quantidade: number = 1
+) {
   const produto = {
     nome,
     preco: Number(preco),
@@ -33,7 +37,7 @@ export function adicionarCarrinho(nome, preco, quantidade = 1) {
   mostrarCarrinho();
 }
 
-function removerItem(index) {
+function removerItem(index: number) {
   if (index < 0 || index >= carrinho.length) {
     return;
   }
@@ -56,7 +60,7 @@ function mostrarCarrinho() {
     return;
   }
 
-  carrinho.forEach((produto, index) => {
+  carrinho.forEach((produto: any, index: number) => {
     const card = document.createElement('div');
     card.className = 'card mb-3';
     card.style.maxWidth = '50rem';
@@ -94,7 +98,7 @@ export function initCarrinho() {
   const lista = document.getElementById('lista-carrinho');
   if (!lista) return;
 
-  lista.addEventListener('click', (event) => {
+  lista.addEventListener('click', (event: any) => {
     const botao = event.target.closest('button[data-index]');
     if (!botao) return;
     const index = Number(botao.dataset.index);

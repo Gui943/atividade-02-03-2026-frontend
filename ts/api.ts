@@ -8,7 +8,7 @@ export async function buscarDepoimentos() {
   return resposta.json();
 }
 
-export async function enviarContato(dados) {
+export async function enviarContato(dados: any) {
   const resposta = await fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'POST',
     headers: {
@@ -20,7 +20,7 @@ export async function enviarContato(dados) {
   return resposta;
 }
 
-export async function buscarEnderecoPorCep(cep) {
+export async function buscarEnderecoPorCep(cep: string) {
   const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
   if (!resposta.ok) {
     throw new Error('Erro ao buscar o CEP');

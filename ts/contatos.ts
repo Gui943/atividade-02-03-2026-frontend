@@ -1,11 +1,11 @@
 import { buscarEnderecoPorCep, enviarContato } from './api.js';
 import { mostrarAlerta } from './ui.js';
 
-function getCampo(id) {
-  return document.getElementById(id);
+function getCampo(id: string): HTMLInputElement | null {
+  return document.getElementById(id) as HTMLInputElement | null;
 }
 
-function formatarCep(valor) {
+function formatarCep(valor: string) {
   return valor ? valor.replace(/\D/g, '') : '';
 }
 
@@ -49,7 +49,7 @@ function limparFormulario() {
   });
 }
 
-function preencherEndereco(dados) {
+function preencherEndereco(dados: any) {
   const rua = getCampo('ruaCliente');
   const bairro = getCampo('bairroCliente');
   const cidade = getCampo('cidadeCliente');
