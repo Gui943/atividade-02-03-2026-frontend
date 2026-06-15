@@ -1,4 +1,4 @@
-import { adicionarCarrinho } from './carrinho.js';
+import { adicionarCarrinho } from './carrinho.ts';
 
 const produtos = [
   {

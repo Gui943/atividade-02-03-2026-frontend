@@ -1,5 +1,5 @@
-import { buscarDepoimentos } from './api.js';
-import { renderDepoimentos } from './ui.js';
+import { buscarDepoimentos } from './api.ts';
+import { renderDepoimentos } from './ui.ts';
 
 export async function initDepoimentos() {
   const lista = document.getElementById('lista-depoimentos');

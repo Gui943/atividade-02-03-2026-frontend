@@ -1,9 +1,9 @@
 import '../styles.scss';
-import { initProdutos } from './produtos.js';
-import { initCarrinho } from './carrinho.js';
-import { initDepoimentos } from './depoimentos.js';
-import { initContatos } from './contatos.js';
-import { initProdutoModal, initThemeToggle } from './ui.js';
+import { initProdutos } from './produtos.ts';
+import { initCarrinho } from './carrinho.ts';
+import { initDepoimentos } from './depoimentos.ts';
+import { initContatos } from './contatos.ts';
+import { initProdutoModal, initThemeToggle } from './ui.ts';
 
 function inicializarPagina() {
   initThemeToggle();

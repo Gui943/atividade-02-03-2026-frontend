@@ -1,5 +1,5 @@
-import { buscarEnderecoPorCep, enviarContato } from './api.js';
-import { mostrarAlerta } from './ui.js';
+import { buscarEnderecoPorCep, enviarContato } from './api.ts';
+import { mostrarAlerta } from './ui.ts';
 
 function getCampo(id: string): HTMLInputElement | null {
   return document.getElementById(id) as HTMLInputElement | null;
